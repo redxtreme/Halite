@@ -50,6 +50,8 @@ while True:
                 if targeted_planets[planet.id] != ship.id:
                     # Skip this planet
                     continue
+            else:
+                targeted_planets[planet.id] = ship.id
 
             # If we can dock, let's (try to) dock. If two ships try to dock at once, neither will be able to.
             if ship.can_dock(planet):
