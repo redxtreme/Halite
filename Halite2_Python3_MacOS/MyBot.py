@@ -21,6 +21,9 @@ game = hlt.Game("Settler")
 # Then we print our start message to the logs
 logging.info("Starting my Settler bot!")
 
+# Keep a list of target planets
+targeted_planets = {}
+
 while True:
     # TURN START
     # Update the map for the new turn and get the latest version
@@ -42,6 +45,12 @@ while True:
                 # Skip this planet
                 continue
 
+            # If the planet has been targeted and current ship isn't targeting that planet
+            if planet.id in targeted_planets:
+                if targeted_planets[planet.id] != ship.id:
+                    # Skip this planet
+                    continue
+
             # If we can dock, let's (try to) dock. If two ships try to dock at once, neither will be able to.
             if ship.can_dock(planet):
                 # We add the command by appending it to the command_queue
@@ -58,7 +67,7 @@ while True:
                 navigate_command = ship.navigate(
                     ship.closest_point_to(planet),
                     game_map,
-                    speed=int(hlt.constants.MAX_SPEED/2),
+                    speed=int(hlt.constants.MAX_SPEED),
                     ignore_ships=True)
                 # If the move is possible, add it to the command_queue (if there are too many obstacles on the way
                 # or we are trapped (or we reached our destination!), navigate_command will return null;
