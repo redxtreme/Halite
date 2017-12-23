@@ -17,9 +17,9 @@ import logging
 
 # GAME START
 # Here we define the bot's name as Settler and initialize the game, including communication with the Halite engine.
-game = hlt.Game("Settler")
+game = hlt.Game("Settler_T")
 # Then we print our start message to the logs
-logging.info("Starting my Settler bot!")
+logging.info("Starting my Settler_T bot!")
 
 # Keep a list of target planets
 targeted_planets = {}
@@ -46,7 +46,7 @@ while True:
                 continue
 
             # If the planet has been targeted and current ship isn't targeting that planet
-            if planet.id in targeted_planets:
+            if planet.id in targeted_planets.keys():
                 if targeted_planets[planet.id] != ship.id:
                     # Skip this planet
                     continue
