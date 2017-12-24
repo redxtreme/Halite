@@ -19,9 +19,15 @@ model_long_training: models/model_long_training.ckpt.meta
 
 model_short_training: models/model_short_training.ckpt.meta
 
+model_cust_training: models/model_cust_training.ckpt.meta
+
 models/model_long_training.ckpt.meta: data/${FILE} ${SOURCES_FOR_TRAINING}
 	mkdir -p models/
 	python3 -m tsmlstarterbot.train --model_name model_long_training --data data/${FILE} --games_limit 1000 --steps 5000 --seed ${SEED}
+
+models/model_cust_training.ckpt.meta: data/${FILE} ${SOURCES_FOR_TRAINING}
+	mkdir -p models/
+	python3 -m tsmlstarterbot.train --model_name model_long_training --data data/${FILE} --games_limit 10000 --steps 7000 --seed ${SEED}
 
 models/model_short_training.ckpt.meta: data/${FILE} ${SOURCES_FOR_TRAINING}
 	mkdir -p models/
@@ -51,6 +57,5 @@ bin/halite:
 compare: bin/compare.sh MyBotShortTraining.py MyBot.py model_short_training model_long_training bin/halite
 	bin/compare.sh MyBotShortTraining.py MyBot.py
 
-submission: 
+submission:
 	zip -r submission.zip MyBot.py LANGUAGE hlt/ tsmlstarterbot/ models/
-
