@@ -2,7 +2,7 @@
 
 # Name of the data file
 FILE=replays-20170930-sample.zip
-LEADERBOARD_FILE=replays-fp.zip
+LEADERBOARD_FILE=replays-leaderboard.zip
 
 # Halite binary address - please change here if you're not using MacOS
 HALITE_BINARY_ADDRESS=https://halite.io/assets/downloads/Halite2_MacOS.zip

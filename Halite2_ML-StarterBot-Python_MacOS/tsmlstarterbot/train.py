@@ -50,9 +50,13 @@ def fetch_data_zip(zipfilename, limit):
         print("Found {} games.".format(len(z.filelist)))
         print("Trying to load up to {} games ...".format(limit))
         for i in z.filelist[:limit]:
-            with z.open(i) as f:
+            with z.open(i, 'r') as f:
                 lines = f.readlines()
                 assert len(lines) == 1
+
+                # Added this this cover byte strings
+                if lines[0][0:2] == "b'":
+                    lines[0] = lines[0][2:-1]
                 d = json.loads(lines[0].decode())
                 all_jsons.append(d)
     print("{} games loaded.".format(len(all_jsons)))
