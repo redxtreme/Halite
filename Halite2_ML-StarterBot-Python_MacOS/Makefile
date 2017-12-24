@@ -2,7 +2,7 @@
 
 # Name of the data file
 FILE=replays-20170930-sample.zip
-LEADERBOARD_FILE=replays-leaderboard.zip
+LEADERBOARD_FILE=replays-fp.zip
 
 # Halite binary address - please change here if you're not using MacOS
 HALITE_BINARY_ADDRESS=https://halite.io/assets/downloads/Halite2_MacOS.zip
@@ -28,7 +28,7 @@ models/model_long_training.ckpt.meta: data/${FILE} ${SOURCES_FOR_TRAINING}
 
 models/model_cust_training.ckpt.meta: data/${LEADERBOARD_FILE} ${SOURCES_FOR_TRAINING}
 	mkdir -p models/
-	python3 -m tsmlstarterbot.train --model_name model_long_training --data data/${LEADERBOARD_FILE} --games_limit 10000 --steps 7000 --seed ${SEED}
+	python3 -m tsmlstarterbot.train --model_name model_long_training --data data/${LEADERBOARD_FILE} --games_limit 10000 --steps 5000 --seed ${SEED}
 
 models/model_short_training.ckpt.meta: data/${FILE} ${SOURCES_FOR_TRAINING}
 	mkdir -p models/
