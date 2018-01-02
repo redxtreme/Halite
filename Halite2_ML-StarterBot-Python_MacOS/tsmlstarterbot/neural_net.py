@@ -24,7 +24,17 @@ def normalize_input(input_data):
 
 class NeuralNet(object):
     FIRST_LAYER_SIZE = 12
-    SECOND_LAYER_SIZE = 6
+    SECOND_LAYER_SIZE = 20
+    THIRD_LAYER_SIZE = 12
+    FOURTH_LAYER_SIZE = 12
+    FIFTH_LAYER_SIZE = 20
+    SIXTH_LAYER_SIZE = 12
+    SEVENTH_LAYER_SIZE = 10
+    EIGTH_LAYER_SIZE = 20
+    NINETH_LAYER_SIZE = 12
+    TENTH_LAYER_SIZE = 20
+    ELEVENTH_LAYER_SIZE = 12
+    TWELVTH_LAYER_SIZE = 12
 
     def __init__(self, cached_model=None, seed=None):
         self._graph = tf.Graph()
@@ -48,11 +58,47 @@ class NeuralNet(object):
 
             first_layer = tf.contrib.layers.fully_connected(flattened_frames, self.FIRST_LAYER_SIZE)
             second_layer = tf.contrib.layers.fully_connected(first_layer, self.SECOND_LAYER_SIZE)
+            third_layer = tf.contrib.layers.fully_connected(second_layer, self.THIRD_LAYER_SIZE)
+            fourth_layer = tf.contrib.layers.fully_connected(third_layer, self.FOURTH_LAYER_SIZE)
+            fifth_layer = tf.contrib.layers.fully_connected(fourth_layer, self.FIFTH_LAYER_SIZE)
+            sixth_layer = tf.contrib.layers.fully_connected(fifth_layer, self.SIXTH_LAYER_SIZE)
+            seventh_layer = tf.contrib.layers.fully_connected(flattened_frames, self.SEVENTH_LAYER_SIZE)
+            eigth_layer = tf.contrib.layers.fully_connected(first_layer, self.EIGTH_LAYER_SIZE)
+            nineth_layer = tf.contrib.layers.fully_connected(second_layer, self.NINETH_LAYER_SIZE)
+            tenth_layer = tf.contrib.layers.fully_connected(third_layer, self.TENTH_LAYER_SIZE)
+            eleventh_layer = tf.contrib.layers.fully_connected(fourth_layer, self.ELEVENTH_LAYER_SIZE)
+            twevlth_layer = tf.contrib.layers.fully_connected(fifth_layer, self.TWELVTH_LAYER_SIZE)
 
-            third_layer = tf.contrib.layers.fully_connected(second_layer, 1, activation_fn=None)
+            layer_13 = tf.contrib.layers.fully_connected(twevlth_layer, self.FIRST_LAYER_SIZE)
+            layer_14 = tf.contrib.layers.fully_connected(layer_13, self.SECOND_LAYER_SIZE)
+            layer_15 = tf.contrib.layers.fully_connected(layer_14, self.THIRD_LAYER_SIZE)
+            layer_16 = tf.contrib.layers.fully_connected(layer_15, self.FOURTH_LAYER_SIZE)
+            layer_17 = tf.contrib.layers.fully_connected(layer_16, self.FIFTH_LAYER_SIZE)
+            layer_18 = tf.contrib.layers.fully_connected(layer_17, self.SIXTH_LAYER_SIZE)
+            layer_19 = tf.contrib.layers.fully_connected(layer_18, self.SEVENTH_LAYER_SIZE)
+            layer_20 = tf.contrib.layers.fully_connected(layer_19, self.EIGTH_LAYER_SIZE)
+            layer_21 = tf.contrib.layers.fully_connected(layer_20, self.NINETH_LAYER_SIZE)
+            layer_22 = tf.contrib.layers.fully_connected(layer_21, self.TENTH_LAYER_SIZE)
+            layer_23 = tf.contrib.layers.fully_connected(layer_22, self.ELEVENTH_LAYER_SIZE)
+            layer_24 = tf.contrib.layers.fully_connected(layer_23, self.TWELVTH_LAYER_SIZE)
+
+            layer_25 = tf.contrib.layers.fully_connected(layer_24, self.FIRST_LAYER_SIZE)
+            layer_26 = tf.contrib.layers.fully_connected(layer_25, self.SECOND_LAYER_SIZE)
+            layer_27 = tf.contrib.layers.fully_connected(layer_26, self.THIRD_LAYER_SIZE)
+            layer_28 = tf.contrib.layers.fully_connected(layer_27, self.FOURTH_LAYER_SIZE)
+            layer_29 = tf.contrib.layers.fully_connected(layer_28, self.FIFTH_LAYER_SIZE)
+            layer_30 = tf.contrib.layers.fully_connected(layer_29, self.SIXTH_LAYER_SIZE)
+            layer_31 = tf.contrib.layers.fully_connected(layer_30, self.SEVENTH_LAYER_SIZE)
+            layer_32 = tf.contrib.layers.fully_connected(layer_31, self.EIGTH_LAYER_SIZE)
+            layer_33 = tf.contrib.layers.fully_connected(layer_32, self.NINETH_LAYER_SIZE)
+            layer_34 = tf.contrib.layers.fully_connected(layer_33, self.TENTH_LAYER_SIZE)
+            layer_35 = tf.contrib.layers.fully_connected(layer_34, self.ELEVENTH_LAYER_SIZE)
+            layer_36 = tf.contrib.layers.fully_connected(layer_35, self.TWELVTH_LAYER_SIZE)
+
+            final_layer = tf.contrib.layers.fully_connected(layer_24, 1, activation_fn=None)
 
             # Group the planets back in frames.
-            logits = tf.reshape(third_layer, [-1, PLANET_MAX_NUM])
+            logits = tf.reshape(final_layer, [-1, PLANET_MAX_NUM])
 
             self._prediction_normalized = tf.nn.softmax(logits)
 
@@ -108,4 +154,3 @@ class NeuralNet(object):
         :param path:
         """
         self._saver.save(self._session, path)
-
