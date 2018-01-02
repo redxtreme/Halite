@@ -3,6 +3,7 @@
 # Name of the data file
 FILE=replays-20170930-sample.zip
 LEADERBOARD_FILE=replays-leaderboard
+MODEL_FILE=models-old/model_cust_training.ckpt
 
 # Halite binary address - please change here if you're not using MacOS
 HALITE_BINARY_ADDRESS=https://halite.io/assets/downloads/Halite2_MacOS.zip
@@ -14,7 +15,7 @@ SOURCES_FOR_TRAINING= tsmlstarterbot/common.py \
 	tsmlstarterbot/neural_net.py tsmlstarterbot/parsing.py \
 	tsmlstarterbot/train.py
 
-default: model_long_training
+default: model_cust_training
 
 model_long_training: models/model_long_training.ckpt.meta
 
@@ -28,7 +29,11 @@ models/model_long_training.ckpt.meta: data/${FILE} ${SOURCES_FOR_TRAINING}
 
 models/model_cust_training.ckpt.meta: data/${LEADERBOARD_FILE} ${SOURCES_FOR_TRAINING}
 	mkdir -p models/
-	python3 -m tsmlstarterbot.train --model_name model_long_training --data data/${LEADERBOARD_FILE} --games_limit 400 --minibatch_size 5 --steps 30000 --seed ${SEED}
+	python3 -m tsmlstarterbot.train --model_name model_cust_training --data data/${LEADERBOARD_FILE} --games_limit 500 --minibatch_size 5 --steps 50000 --seed ${SEED}
+
+more_training: data/${LEADERBOARD_FILE} ${SOURCES_FOR_TRAINING}
+	mkdir -p models/
+	python3 -m tsmlstarterbot.train --model_name model_cust_training --data data/${LEADERBOARD_FILE} --games_limit 100 --cache ${MODEL_FILE} --minibatch_size 5 --steps 1000 --seed ${SEED}
 
 models/model_short_training.ckpt.meta: data/${FILE} ${SOURCES_FOR_TRAINING}
 	mkdir -p models/
