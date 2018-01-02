@@ -95,7 +95,7 @@ class NeuralNet(object):
             layer_35 = tf.contrib.layers.fully_connected(layer_34, self.ELEVENTH_LAYER_SIZE)
             layer_36 = tf.contrib.layers.fully_connected(layer_35, self.TWELVTH_LAYER_SIZE)
 
-            final_layer = tf.contrib.layers.fully_connected(layer_24, 1, activation_fn=None)
+            final_layer = tf.contrib.layers.fully_connected(layer_36, 1, activation_fn=None)
 
             # Group the planets back in frames.
             logits = tf.reshape(final_layer, [-1, PLANET_MAX_NUM])
@@ -104,7 +104,7 @@ class NeuralNet(object):
 
             self._loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=self._target_distribution))
 
-            self._optimizer = tf.train.AdamOptimizer(learning_rate=1e-4).minimize(self._loss)
+            self._optimizer = tf.train.AdamOptimizer(learning_rate=1e-5).minimize(self._loss)
             self._saver = tf.train.Saver()
 
             if cached_model is None:
