@@ -29,11 +29,11 @@ models/model_long_training.ckpt.meta: data/${FILE} ${SOURCES_FOR_TRAINING}
 
 models/model_cust_training.ckpt.meta: data/${LEADERBOARD_FILE} ${SOURCES_FOR_TRAINING}
 	mkdir -p models/
-	python3 -m tsmlstarterbot.train --model_name model_cust_training --data data/${LEADERBOARD_FILE} --games_limit 500 --minibatch_size 5 --steps 50000 --seed ${SEED}
+	python3 -m tsmlstarterbot.train --model_name model_cust_training --data data/${LEADERBOARD_FILE} --games_limit 320 --minibatch_size 5 --steps 100000 --seed ${SEED}
 
 more_training: data/${LEADERBOARD_FILE} ${SOURCES_FOR_TRAINING}
 	mkdir -p models/
-	python3 -m tsmlstarterbot.train --model_name model_cust_training --data data/${LEADERBOARD_FILE} --games_limit 100 --cache ${MODEL_FILE} --minibatch_size 5 --steps 1000 --seed ${SEED}
+	python3 -m tsmlstarterbot.train --model_name model_cust_training --data data/${LEADERBOARD_FILE} --games_limit 320 --cache ${MODEL_FILE} --minibatch_size 5 --steps 50000
 
 models/model_short_training.ckpt.meta: data/${FILE} ${SOURCES_FOR_TRAINING}
 	mkdir -p models/
