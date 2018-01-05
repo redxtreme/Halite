@@ -218,7 +218,7 @@ class Bot:
         have_time = current_time - start_of_round < 1.2
         navigate_command = None
         if have_time:
-            navigate_command = ship.navigate(destination, game_map, speed=speed, max_corrections=180)
+            navigate_command = ship.navigate(destination, game_map, speed=speed, max_corrections=45)
         if navigate_command is None:
             # ship.navigate may return None if it cannot find a path. In such a case we just thrust.
             dist = ship.calculate_distance_between(destination)

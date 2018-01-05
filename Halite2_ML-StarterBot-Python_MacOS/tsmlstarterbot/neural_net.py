@@ -23,8 +23,11 @@ def normalize_input(input_data):
 
 
 class NeuralNet(object):
-    FIRST_LAYER_SIZE = 12
+    FIRST_LAYER_SIZE = 6
     SECOND_LAYER_SIZE = 6
+    THIRD_LAYER_SIZE = 6
+    FOURTH_LAYER_SIZE = 6
+    FIFTH_LAYER_SIZE = 6
 
     def __init__(self, cached_model=None, seed=None):
         self._graph = tf.Graph()
@@ -48,11 +51,13 @@ class NeuralNet(object):
 
             first_layer = tf.contrib.layers.fully_connected(flattened_frames, self.FIRST_LAYER_SIZE)
             second_layer = tf.contrib.layers.fully_connected(first_layer, self.SECOND_LAYER_SIZE)
+            third_layer = tf.contrib.layers.fully_connected(second_layer, self.THIRD_LAYER_SIZE)
+            fourth_layer = tf.contrib.layers.fully_connected(third_layer, self.FOURTH_LAYER_SIZE)
 
-            third_layer = tf.contrib.layers.fully_connected(second_layer, 1, activation_fn=None)
+            final_layer = tf.contrib.layers.fully_connected(fourth_layer, 1, activation_fn=None)
 
             # Group the planets back in frames.
-            logits = tf.reshape(third_layer, [-1, PLANET_MAX_NUM])
+            logits = tf.reshape(final_layer, [-1, PLANET_MAX_NUM])
 
             self._prediction_normalized = tf.nn.softmax(logits)
 
@@ -108,4 +113,3 @@ class NeuralNet(object):
         :param path:
         """
         self._saver.save(self._session, path)
-
