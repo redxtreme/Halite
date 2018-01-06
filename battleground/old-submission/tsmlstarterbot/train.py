@@ -105,7 +105,7 @@ def main():
         start = (s * args.minibatch_size) % training_data_size
         end = start + args.minibatch_size
         training_loss = nn.fit(training_input[start:end], training_output[start:end])
-        if s % 10000 == 0 or s == args.steps - 1:
+        if s % 200 == 0 or s == args.steps - 1:
             validation_loss = nn.compute_loss(validation_input, validation_output)
             print("Step: {}, cross validation loss: {}, training_loss: {}".format(s, validation_loss, training_loss))
             curves.append((s, training_loss, validation_loss))

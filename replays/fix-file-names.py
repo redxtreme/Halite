@@ -1,5 +1,5 @@
 import os
-datas = ['halite-fakepsyho']
+datas = ['halite-mellendo', 'halite-prisoner3d', 'halite-recurs3', 'halite-zxqfl']
 dir = '/Users/redstar/Documents/Programming/Python/Halite/replays/'
 for d in datas:
 	os.chdir(dir+d)
