@@ -28,13 +28,6 @@ class NeuralNet(object):
     THIRD_LAYER_SIZE = 6
     FOURTH_LAYER_SIZE = 6
     FIFTH_LAYER_SIZE = 6
-    SIXTH_LAYER_SIZE = 100
-    SEVENTH_LAYER_SIZE = 100
-    EIGTH_LAYER_SIZE = 100
-    NINETH_LAYER_SIZE = 100
-    TENTH_LAYER_SIZE = 100
-    ELEVENTH_LAYER_SIZE = 100
-    TWELVTH_LAYER_SIZE = 100
 
     def __init__(self, cached_model=None, seed=None):
         self._graph = tf.Graph()
