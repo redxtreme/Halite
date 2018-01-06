@@ -1,1 +1,1 @@
-for ((n=0;n<100;n++)); do ./halite -d '160 160' -t -q 'python3 old-submission/MyBot.py' 'python3 submission/MyBot.py' & ./halite -d '312 208' -t -q 'python3 old-submission/MyBot.py' 'python3 submission/MyBot.py'; done
+for ((n=0;n<10;n++)); do ./halite -d '160 160' -t -q 'python3 old-submission/MyBot.py' 'python3 submission/MyBot.py' & ./halite -d '312 208' -t -q 'python3 old-submission/MyBot.py' 'python3 submission/MyBot.py'; done
