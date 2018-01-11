@@ -29,8 +29,9 @@ for num in range(5000):
 
         with open('data.gameout', 'r') as f:
             contents = f.readlines()
-            CharlesBot1 = contents[-4]
-            CharlesBot2 = contents[-3]
+            CharlesBot1 = contents[-2] # Different from source code
+            CharlesBot2 = contents[-1] # Different from source code
+            print(contents)
             print(CharlesBot1)
             print(CharlesBot2)
 
