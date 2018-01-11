@@ -1,0 +1,32 @@
+[
+ {
+  "Error": {
+   "Message": "ERRORED! Got Exception (if any): ERROR: Bot #0: Timeout reading commands for bot; select() result: 0 (max time: 2000 milliseconds).\nNo input received from bot.; Response received (if any): ",
+   "Turn": 1
+  },
+  "Frames": [
+   {
+    "Time": 77,
+    "Turn": 0
+   },
+   null
+  ],
+  "PlayerID": 0,
+  "PlayerName": "python: can't open file 'MyBot"
+ },
+ {
+  "Error": {
+   "Message": "ERRORED! Got Exception (if any): ERROR: Bot #1: Timeout reading commands for bot; select() result: 0 (max time: 2000 milliseconds).\nNo input received from bot.; Response received (if any): ",
+   "Turn": 1
+  },
+  "Frames": [
+   {
+    "Time": 76,
+    "Turn": 0
+   },
+   null
+  ],
+  "PlayerID": 1,
+  "PlayerName": "python: can't open file 'MyBot"
+ }
+]

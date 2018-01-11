@@ -5,7 +5,7 @@ import numpy as np
 import random
 import os
 
-VERSION = 2
+VERSION = 1
 
 HM_ENT_FEATURES = 5
 PCT_CHANGE_CHANCE = 30
