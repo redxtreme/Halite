@@ -4,7 +4,6 @@ import time
 ship_requirement = 10
 damage_requirement = 1000
 
-#TODO consider trainging for 4 player games
 
 def get_ships(data):
     return int(data.split("producing ")[1].split(" ships")[0])
@@ -26,7 +25,7 @@ for num in range(5000):
             p2_pct = round(player_2_wins/(player_1_wins+player_2_wins)*100.0, 2)
             print("Player 1 win: {}%; Player 2 win: {}%.".format(p1_pct, p2_pct))
 
-        os.system('./halite -d "360 240" "python MyBot1.py" "python MyBot2.py" >> data.gameout')
+        os.system('./halite -d "360 240" "python MyBot-1.py" "python MyBot-2.py" >> data.gameout')
 
         with open('data.gameout', 'r') as f:
             contents = f.readlines()
