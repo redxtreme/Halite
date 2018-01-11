@@ -31,7 +31,6 @@ for num in range(5000):
             contents = f.readlines()
             CharlesBot1 = contents[-2] # Different from source code
             CharlesBot2 = contents[-1] # Different from source code
-            print(contents)
             print(CharlesBot1)
             print(CharlesBot2)
 
