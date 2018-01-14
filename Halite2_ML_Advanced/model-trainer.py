@@ -102,7 +102,7 @@ history = model.fit(x_train, y_train,
                     batch_size=batch_size,
                     epochs=epochs,
                     verbose=1,
-                    validation_split=0.1 # 10% in sample accuracy
+                    validation_split=0.1) # 10% in sample accuracy
 
 # Out of sample accuracy. If the in-sample accuracy is higher than
 # this accuracy it's a sign of overfitting.
