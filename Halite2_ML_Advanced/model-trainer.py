@@ -13,7 +13,7 @@ test_size = 5000
 in_model = 'model_checkpoint_{}_batch_{}_epochs.h5'.format(0, 0)
 out_model = 'model_checkpoint_{}_batch_{}_epochs.h5'.format(batch_size, epochs)
 
-load_model = False
+load_prev_model = False
 
 if load_prev_model:
     print('Loading model: ', in_model)
