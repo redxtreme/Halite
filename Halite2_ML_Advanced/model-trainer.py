@@ -75,7 +75,7 @@ for x,y in tqdm(all_choices):
 
 # Save these so we can load them later
 np.save('train_in.npy', train_in)
-np.save('train_out.npy', train_out
+np.save('train_out.npy', train_out)
 
 # Split the data
 x_train = train_in[:-test_size]
