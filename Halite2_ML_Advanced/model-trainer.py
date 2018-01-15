@@ -54,9 +54,9 @@ for n, _ in tqdm(enumerate(train_in)):
 print(len(attack_enemy), len(mine_our_planet), len(mine_empty_planet))
 shortest = min(len(attack_enemy), len(mine_our_planet), len(mine_empty_planet))
 
-random.shuffel(attack_enemy)
-random.shuffel(mine_our_planet)
-random.shuffel(mine_empty_planet)
+random.shuffle(attack_enemy)
+random.shuffle(mine_our_planet)
+random.shuffle(mine_empty_planet)
 
 attack_enemy = attack_enemy[:shortest]
 mine_our_planet = mine_our_planet[:shortest]
@@ -65,8 +65,8 @@ mine_empty_planet = mine_empty_planet[:shortest]
 print(len(attack_enemy), len(mine_our_planet), len(mine_empty_planet))
 
 all_choices = attack_enemy + mine_our_planet + mine_empty_planet
-# Shuffel all choices so it doesn't focus learning one at a time
-random.shuffel(all_choices)
+# Shuffle all choices so it doesn't focus learning one at a time
+random.shuffle(all_choices)
 
 print('Rebuilding training data...')
 for x,y in tqdm(all_choices):

@@ -17,7 +17,7 @@ def get_rank(data):
 player_1_wins = 0
 player_2_wins = 0
 
-for num in range(5000):
+for num in range(1000):
     try:
         print("Currently on: {}".format(num))
         if player_1_wins > 0 or player_2_wins > 0:
